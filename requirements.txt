@@ -15,3 +15,5 @@ djoser
 djangorestframework_simplejwt
 # для открытия доступа к серверу
 django-cors-headers
+# для создание slug
+python-slugify
