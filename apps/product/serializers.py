@@ -7,6 +7,7 @@ class ProductImageSerializer(serializers.ModelSerializer):
         model = ProductImage
         fields = ['image']
 
+
 class ProductListSerializer(serializers.ListSerializer):
     def to_representation(self, data):
         return [{
