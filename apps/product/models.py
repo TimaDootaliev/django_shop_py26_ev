@@ -6,6 +6,7 @@ from datetime import datetime
 
 User = get_user_model()
 
+
 class Product(models.Model):
     slug = models.SlugField(primary_key=True, max_length=150, blank=True)
     title = models.CharField(max_length=150)

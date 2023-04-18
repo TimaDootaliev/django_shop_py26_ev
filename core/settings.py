@@ -173,4 +173,5 @@ EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_USE_TLS = config('USE_TLS', cast=bool)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+
 CORS_ALLOW_ALL_ORIGINS = True
