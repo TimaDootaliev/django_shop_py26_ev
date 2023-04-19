@@ -13,7 +13,7 @@ class ProductListSerializer(serializers.ListSerializer):
         return [{
             'title': item.title,
             'slug': item.slug,
-            'user': item.user,
+            'user': item.user.username,
             'price': item.price
         } for item in data.all()]
 
