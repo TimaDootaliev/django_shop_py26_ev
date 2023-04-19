@@ -24,12 +24,14 @@ class ProductSerializer(serializers.ModelSerializer):
         write_only=True,
         required=False
     )
+    user = serializers.ReadOnlyField(source='user.username')
+
 
     class Meta:
         model = Product
         fields = '__all__'
         # exclude = 'поле_которое_нужно_пропустить'
-        read_only_fields = ['user', 'slug']
+        read_only_fields = ['slug']
         list_serializer_class = ProductListSerializer
 
     def to_representation(self, instance):
