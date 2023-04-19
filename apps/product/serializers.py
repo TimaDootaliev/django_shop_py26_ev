@@ -14,7 +14,8 @@ class ProductListSerializer(serializers.ListSerializer):
             'title': item.title,
             'slug': item.slug,
             'user': item.user.username,
-            'price': item.price
+            'price': item.price,
+            'main_image': item.main_image
         } for item in data.all()]
 
 
