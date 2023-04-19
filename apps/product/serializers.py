@@ -37,14 +37,15 @@ class ProductSerializer(serializers.ModelSerializer):
         representation['carousel'] = ProductImageSerializer(instance.images.all(), many=True).data
         return representation
     
-    def create(self, validated_data):
+    def create(self, validated_data: dict):
         validated_data['user'] = self.context['request'].user
-        imgs = validated_data.pop('imgs')
+        imgs = validated_data.pop('imgs', None)
         product = Product.objects.create(**validated_data)
-        images = []
-        for image in imgs:
-            images.append(ProductImage(product=product, image=image))
-        ProductImage.objects.bulk_create(images)
+        if imgs:
+            images = []
+            for image in imgs:
+                images.append(ProductImage(product=product, image=image))
+            ProductImage.objects.bulk_create(images)
         return product
     
 
