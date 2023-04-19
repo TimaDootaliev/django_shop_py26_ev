@@ -177,12 +177,18 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 CORS_ALLOW_ALL_ORIGINS = True
 
 
+CELERY_TIMEZONE = "Asia/Bishkek"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+
 SWAGGER_SETTINGS = {
-   'SECURITY_DEFINITIONS': {
-      'JWT': {
+    'SECURITY_DEFINITIONS': {
+        'JWT': {
             'type': 'apiKey',
+            'in': 'header',
             'name': 'Authorization',
-            'in': 'header'
-      }
-   }
+        }
+    }
 }

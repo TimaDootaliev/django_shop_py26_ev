@@ -44,7 +44,7 @@ class ProductSerializer(serializers.ModelSerializer):
         validated_data['user'] = self.context['request'].user
         imgs = validated_data.pop('imgs', None)
         product = Product.objects.create(**validated_data)
-        if imgs:
+        if imgs is not None:
             images = []
             for image in imgs:
                 images.append(ProductImage(product=product, image=image))

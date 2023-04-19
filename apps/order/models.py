@@ -51,4 +51,9 @@ class OrderItem(models.Model):
 @receiver(post_save, sender=Order)
 def send_order_confirmation_mail(sender: Order, instance: Order, created: bool, **kwargs):
     if created:
-        send_confirmation_mail(instance)
+        send_confirmation_mail.delay(
+            instance.user.username,
+            instance.address,
+            instance.pk,
+            instance.user.email
+        )
