@@ -148,6 +148,12 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_FILTER_BACKENDS': [
+                    'django_filters.rest_framework.DjangoFilterBackend',
+                    'rest_framework.filters.SearchFilter',
+                    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 3
 }
 
 # https://django-rest-framework-simplejwt.readthedocs.io/en/latest/
@@ -182,6 +188,7 @@ CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+
 
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
