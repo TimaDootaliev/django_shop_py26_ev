@@ -1,4 +1,5 @@
 from rest_framework import permissions, viewsets
+from rest_framework import filters
 
 from .models import Product
 from .serializers import ProductSerializer
@@ -8,8 +9,8 @@ from .permissions import IsOwner
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    search_fields = ['title']
     filterset_fields = ['category__slug']
+    search_fields = ['title']
 
     def get_permissions(self):
         method = self.request.method
